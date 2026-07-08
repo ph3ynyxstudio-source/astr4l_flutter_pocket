@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../core/theme/app_theme.dart';
 import '../features/pocket_builder/presentation/builder_screen.dart';
 
 class Astr4lForgePocketApp extends StatelessWidget {
@@ -10,13 +11,7 @@ class Astr4lForgePocketApp extends StatelessWidget {
     return MaterialApp(
       title: 'Astr4lForge Pocket',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color(0xFF54D6FF),
-          brightness: Brightness.dark,
-        ),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.dark(),
       home: const BuilderScreen(),
     );
   }

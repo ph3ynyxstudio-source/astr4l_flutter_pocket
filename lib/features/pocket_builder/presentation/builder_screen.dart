@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/widgets/accent_button.dart';
+import '../../../core/widgets/pocket_card.dart';
 import 'preview_screen.dart';
 
 class BuilderScreen extends StatelessWidget {
@@ -11,32 +13,57 @@ class BuilderScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Astr4lForge Pocket'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: SafeArea(
+        child: ListView(
+          padding: const EdgeInsets.all(16),
           children: [
-            const Text(
+            Text(
               'Builder',
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.headlineMedium,
             ),
-            const SizedBox(height: 12),
-            const Text(
+            const SizedBox(height: 8),
+            Text(
               'Créer une configuration de widget UI simple.',
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
             const SizedBox(height: 24),
-            FilledButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const PreviewScreen(),
+            PocketCard(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Configuration',
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
-                );
-              },
-              child: const Text('Ouvrir la preview'),
+                  const SizedBox(height: 12),
+                  const Text(
+                    'Aucun widget configuré pour le moment.',
+                  ),
+                  const SizedBox(height: 16),
+                  AccentButton(
+                    label: 'Ouvrir la preview',
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const PreviewScreen(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 24),
+            PocketCard(
+              child: SizedBox(
+                height: 160,
+                child: Center(
+                  child: Text(
+                    'Zone preview vide',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ),
+              ),
             ),
           ],
         ),
